@@ -15,7 +15,7 @@ dotenv.config();
 
 connectDB();
 
-const allowedDomains = ["http://localhost:5173"];
+const allowedDomains = ["http://localhost:5173", "http://localhost:4000"];
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -24,6 +24,7 @@ const corsOptions = {
       callback(null, true);
     } else {
       callback(new Error("No access allowed by CORS"));
+      console.log(error);
     }
   },
 };
