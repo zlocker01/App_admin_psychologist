@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import { connectDB } from "./config/db.js";
 import { psychologistRouter } from "./routes/psychologistRoutes.js";
 import { patientRouter } from "./routes/patientRoutes.js";
@@ -14,8 +15,23 @@ dotenv.config();
 
 connectDB();
 
-// endpoints
+const allowedDomains = ["http://localhost:5173"];
 
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedDomains.indexOf(origin) !== -1) {
+      // request is allowed
+      callback(null, true);
+    } else {
+      callback(new Error("No access allowed by CORS"));
+    }
+  },
+};
+
+// adding Corse request to Express
+app.use(cors(corsOptions));
+
+// endpoints
 app.use("/api/psychologist", psychologistRouter);
 app.use("/api/patient", patientRouter);
 

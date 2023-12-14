@@ -1,9 +1,10 @@
 import { Psychologist } from "../models/Psychologist.js";
 import { generateJWT } from "../helpers/generateJWT.js";
 import { generateID } from "../helpers/generateID.js";
+import { emailRegister } from "../helpers/emailRegister.js";
 
 const register = async (req, res) => {
-  const { email } = req.body;
+  const { email, name } = req.body;
 
   //   prevent user duplication
   const existeUsuario = await Psychologist.findOne({ email });
@@ -17,9 +18,16 @@ const register = async (req, res) => {
     // save a new user
     const psychologist = new Psychologist(req.body);
     const psychologistSaved = await psychologist.save();
-    res.json({ msg: "registro" });
+    // sending email to confirm account
+    emailRegister({
+      email,
+      name,
+      token: psychologistSaved.token,
+    });
+    res.json({ msg: "Correo electrónico enviado" });
   } catch (error) {
     console.log(error);
+    res.status(500).json({ msg: "Error en el Servidor" });
   }
 };
 
