@@ -2,6 +2,7 @@ import { Psychologist } from "../models/Psychologist.js";
 import { generateJWT } from "../helpers/generateJWT.js";
 import { generateID } from "../helpers/generateID.js";
 import { emailRegister } from "../helpers/emailRegister.js";
+import { emailForgottenPassword } from "../helpers/emailForgottenPassword.js";
 
 const register = async (req, res) => {
   const { email, name } = req.body;
@@ -89,15 +90,22 @@ const forgottenPassword = async (req, res) => {
   const existPsychologist = await Psychologist.findOne({ email });
 
   if (!existPsychologist) {
-    const error = new Error("El usuario no existe");
+    const error = new Error("No existe ningun usuario con este correo");
     return res.status(404).json({ msg: error.message });
   }
 
   try {
     existPsychologist.token = generateID();
     await existPsychologist.save();
+
+    // sending email
+    emailForgottenPassword({
+      email,
+      name: existPsychologist.name,
+      token: existPsychologist.token,
+    });
     res.json({
-      msg: "Hemos enviado un email con las instrucciones para recuperar tu contraseña",
+      msg: "Te enviamos un correo con las instrucciones para recuperar tu contraseña",
     });
   } catch (error) {
     console.log(error);
