@@ -1,8 +1,10 @@
+import bcrypt from 'bcrypt';
 import { Psychologist } from "../models/Psychologist.js";
 import { generateJWT } from "../helpers/generateJWT.js";
 import { generateID } from "../helpers/generateID.js";
 import { emailRegister } from "../helpers/emailRegister.js";
 import { emailForgottenPassword } from "../helpers/emailForgottenPassword.js";
+
 
 const register = async (req, res) => {
   const { email, name } = req.body;
