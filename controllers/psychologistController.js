@@ -71,7 +71,7 @@ const autentication = async (req, res) => {
   } else {
     //   user confirmed comprobation
     if (!user.confirmed) {
-      const error = new Error("Tu cuenta no ha sido confirmada");
+      const error = new Error("Aún no has confirmado tu Cuenta");
       return res.status(403).json({ msg: error.message });
     } else {
       //   checkin user pasword
