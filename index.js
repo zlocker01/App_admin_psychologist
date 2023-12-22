@@ -15,6 +15,7 @@ dotenv.config();
 
 connectDB();
 
+// allowed domains controller
 const allowedDomains = [process.env.FRONTEND_URL];
 
 const corsOptions = {
