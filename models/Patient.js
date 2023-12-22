@@ -27,16 +27,16 @@ const patientsSchema = mongoose.Schema(
     },
 
     // clinical history
-    ReasonForConsultation: {
+    reasonForConsultation: {
       type: String,
     },
-    MedicalHistory: {
+    medicalHistory: {
       type: String,
     },
-    FamilyBackground: {
+    familyBackground: {
       type: String,
     },
-    PreviousTreatments: {
+    previousTreatments: {
       type: String,
     },
 
