@@ -82,26 +82,22 @@ const patientsSchema = mongoose.Schema(
     },
 
     // progress and sessions
-    sessions: [
-      {
-        date: {
-          type: Date,
-          default: Date.now,
-        },
-        duration: {
-          type: String,
-        },
-        discussedTopics: {
-          type: String,
-        },
-        therapeuticTechniques: {
-          type: String,
-        },
-        progress: {
-          type: String,
-        },
-      },
-    ],
+    date: {
+      type: Date,
+      default: Date.now,
+    },
+    duration: {
+      type: String,
+    },
+    discussedTopics: {
+      type: String,
+    },
+    therapeuticTechniques: {
+      type: String,
+    },
+    progress: {
+      type: String,
+    },
 
     // evaluation
     reviewsTreatment: {
