@@ -26,6 +26,20 @@ const patientsSchema = mongoose.Schema(
       type: String,
     },
 
+    // clinical history
+    ReasonForConsultation: {
+      type: String,
+    },
+    MedicalHistory: {
+      type: String,
+    },
+    FamilyBackground: {
+      type: String,
+    },
+    PreviousTreatments: {
+      type: String,
+    },
+
     // first evaluation
     evaluationMentalHealth: {
       type: String,
@@ -36,28 +50,6 @@ const patientsSchema = mongoose.Schema(
     objectivesTherapeuticsInitials: {
       type: String,
     },
-
-    // progress and sessions
-    sessions: [
-      {
-        date: {
-          type: Date,
-          default: Date.now,
-        },
-        duration: {
-          type: String,
-        },
-        discussedTopics: {
-          type: String,
-        },
-        therapeuticTechniques: {
-          type: String,
-        },
-        progress: {
-          type: String,
-        },
-      },
-    ],
 
     // Diagnostic
     provisionalDiagnosis: {
@@ -88,6 +80,28 @@ const patientsSchema = mongoose.Schema(
     frequency: {
       type: String,
     },
+
+    // progress and sessions
+    sessions: [
+      {
+        date: {
+          type: Date,
+          default: Date.now,
+        },
+        duration: {
+          type: String,
+        },
+        discussedTopics: {
+          type: String,
+        },
+        therapeuticTechniques: {
+          type: String,
+        },
+        progress: {
+          type: String,
+        },
+      },
+    ],
 
     // evaluation
     reviewsTreatment: {
