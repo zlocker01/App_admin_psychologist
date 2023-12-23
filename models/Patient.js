@@ -8,7 +8,7 @@ const patientsSchema = mongoose.Schema(
       required: true,
     },
     age: {
-      type: Number,
+      type: String,
     },
     gender: {
       type: String,
@@ -24,6 +24,10 @@ const patientsSchema = mongoose.Schema(
     },
     address: {
       type: String,
+    },
+    date: {
+      type: Date,
+      default: Date.now,
     },
 
     // clinical history
@@ -82,10 +86,6 @@ const patientsSchema = mongoose.Schema(
     },
 
     // progress and sessions
-    date: {
-      type: Date,
-      default: Date.now,
-    },
     duration: {
       type: String,
     },
