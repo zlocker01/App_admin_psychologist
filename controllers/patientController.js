@@ -52,11 +52,11 @@ const updatePatient = async (req, res) => {
     name,
     age,
     gender,
-    email,
+    scholarship,
     phone,
+    email,
     address,
     date,
-    scholarship,
     reasonForConsultation,
     medicalHistory,
     familyBackground,
@@ -92,11 +92,11 @@ const updatePatient = async (req, res) => {
   patient.phone = phone || patient.phone;
   patient.email = email || patient.email;
   patient.address = address || patient.address;
+  patient.date = date || patient.date;
   
   // history
   patient.reasonForConsultation = reasonForConsultation || patient.reasonForConsultation;
   patient.medicalHistory = medicalHistory || patient.medicalHistory; 
-  patient.reasonForConsultationaddress = reasonForConsultationaddress || patient.reasonForConsultationaddress;
   patient.familyBackground = familyBackground|| patient.familyBackgrounds;
   patient.previousTreatments = previousTreatments|| patient.previousTreatments;
 
@@ -104,14 +104,6 @@ const updatePatient = async (req, res) => {
   patient.evaluationMentalHealth = evaluationMentalHealth || patient.evaluationMentalHealth;
   patient.evaluationRisk = evaluationRisk || patient.evaluationRisk;
   patient.objectivesTherapeuticsInitials = objectivesTherapeuticsInitials || patient.objectivesTherapeuticsInitials;
-
-  // progress and sessions
-  patient.sessions = sessions || patient.sessions;
-  patient.date = date || patient.date;
-  patient.duration = duration || patient.duration;
-  patient.discussedTopics = discussedTopics || patient.discussedTopics;
-  patient.therapeuticTechniques = therapeuticTechniques || patient.therapeuticTechniques;
-  patient.progress = progress || patient.progress;
 
   // Diagnostic
   patient.provisionalDiagnosis = provisionalDiagnosis || patient.provisionalDiagnosis;
@@ -126,10 +118,15 @@ const updatePatient = async (req, res) => {
   patient.medicines = medicines || patient.medicines;
   patient.dose = dose || patient.dose;
   patient.frequency = frequency || patient.frequency;
+  
+  // sessions
+  patient.duration = duration || patient.duration;
+  patient.discussedTopics = discussedTopics || patient.discussedTopics;
+  patient.therapeuticTechniques = therapeuticTechniques || patient.therapeuticTechniques;
+  patient.progress = progress || patient.progress;
 
   // evaluation
-  patient.reviewsTreatment =
-    req.body.reviewsTreatment || patient.reviewsTreatment;
+  patient.reviewsTreatment = reviewsTreatment || patient.reviewsTreatment;
   patient.adjustmentsMade = adjustmentsMade || patient.adjustmentsMade;
   patient.treatmentEffectiveness = treatmentEffectiveness || patient.treatmentEffectiveness;
 
