@@ -11,15 +11,15 @@ import { checkAuth } from "../middleware/authMiddleware.js";
 export const patientRouter = express.Router();
 
 patientRouter
-  .route("/")
-  //   add patient
-  .post(checkAuth, addPatient)
-  //   get all patients
-  .get(checkAuth, getPatients);
+.route("/")
+//   add patient
+.post(checkAuth, addPatient)
+//   get all patients
+.get(checkAuth, getPatients);
 
 //   get one patient with ID
 patientRouter
-  .route("/:id")
-  .get(checkAuth, getPatient)
-  .put(checkAuth, updatePatient)
-  .delete(checkAuth, deletePatient);
+.route("/:id")
+.get(checkAuth, getPatient)
+.put(checkAuth, updatePatient)
+.delete(checkAuth, deletePatient);

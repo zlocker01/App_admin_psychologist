@@ -30,8 +30,9 @@ const corsOptions = {
     } else {
       callback(new Error("No access allowed by CORS"));
     }
-  },
+  }
 };
+
 
 // adding Corse request to Express
 app.use(cors(corsOptions));

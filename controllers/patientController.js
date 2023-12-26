@@ -36,7 +36,7 @@ const getPatient = async (req, res) => {
 
 const updatePatient = async (req, res) => {
   const { id } = req.params;
-  const patient = await Patient.findById(id).populate("sessions");
+  const patient = await Patient.findById(id);
 
   if (!patient) {
     return res.status(404).json({ msg: "Paciente no encontrado" });
@@ -48,62 +48,95 @@ const updatePatient = async (req, res) => {
 
   //   updating patient
 
+  const {
+    name,
+    age,
+    gender,
+    email,
+    phone,
+    address,
+    date,
+    scholarship,
+    reasonForConsultation,
+    medicalHistory,
+    familyBackground,
+    previousTreatments,
+    evaluationMentalHealth,
+    evaluationRisk,
+    objectivesTherapeuticsInitials,
+    provisionalDiagnosis,
+    evaluationDiagnosis,
+    planningTreatment,
+    therapeuticInterventions,
+    recommendedActivities,
+    medicines,
+    dose,
+    frequency,
+    duration,
+    discussedTopics,
+    therapeuticTechniques,
+    progress,
+    reviewsTreatment,
+    adjustmentsMade,
+    treatmentEffectiveness,
+    observations,
+    importantEvents,
+    feedbackPatient,
+  } = req.body;
+
   // basic info
-  patient.name = req.body.name || patient.name;
-  patient.age = req.body.age || patient.age;
-  patient.gender = req.body.gender || patient.gender;
-  patient.scholarship = req.body.scholarship || patient.scholarship;
-  patient.phone = req.body.phone || patient.phone;
-  patient.email = req.body.email || patient.email;
-  patient.address = req.body.address || patient.address;
+  patient.name = name || patient.name;
+  patient.age = age || patient.age;
+  patient.gender = gender || patient.gender;
+  patient.scholarship = scholarship || patient.scholarship;
+  patient.phone = phone || patient.phone;
+  patient.email = email || patient.email;
+  patient.address = address || patient.address;
+  
+  // history
+  patient.reasonForConsultation = reasonForConsultation || patient.reasonForConsultation;
+  patient.medicalHistory = medicalHistory || patient.medicalHistory; 
+  patient.reasonForConsultationaddress = reasonForConsultationaddress || patient.reasonForConsultationaddress;
+  patient.familyBackground = familyBackground|| patient.familyBackgrounds;
+  patient.previousTreatments = previousTreatments|| patient.previousTreatments;
 
   // first evaluation
-  patient.evaluationMentalHealth =
-    req.body.evaluationMentalHealth || patient.evaluationMentalHealth;
-  patient.evaluationRisk = req.body.evaluationRisk || patient.evaluationRisk;
-  patient.objectivesTherapeuticsInitials =
-    req.body.objectivesTherapeuticsInitials ||
-    patient.objectivesTherapeuticsInitials;
+  patient.evaluationMentalHealth = evaluationMentalHealth || patient.evaluationMentalHealth;
+  patient.evaluationRisk = evaluationRisk || patient.evaluationRisk;
+  patient.objectivesTherapeuticsInitials = objectivesTherapeuticsInitials || patient.objectivesTherapeuticsInitials;
 
   // progress and sessions
-  patient.sessions = req.body.sessions || patient.sessions;
-  patient.date = req.body.date || patient.date;
-  patient.duration = req.body.duration || patient.duration;
-  patient.discussedTopics = req.body.discussedTopics || patient.discussedTopics;
-  patient.therapeuticTechniques =
-    req.body.therapeuticTechniques || patient.therapeuticTechniques;
-  patient.progress = req.body.progress || patient.progress;
+  patient.sessions = sessions || patient.sessions;
+  patient.date = date || patient.date;
+  patient.duration = duration || patient.duration;
+  patient.discussedTopics = discussedTopics || patient.discussedTopics;
+  patient.therapeuticTechniques = therapeuticTechniques || patient.therapeuticTechniques;
+  patient.progress = progress || patient.progress;
 
   // Diagnostic
-  patient.provisionalDiagnosis =
-    req.body.provisionalDiagnosis || patient.provisionalDiagnosis;
-  patient.evaluationDiagnosis =
-    req.body.evaluationDiagnosis || patient.evaluationDiagnosis;
+  patient.provisionalDiagnosis = provisionalDiagnosis || patient.provisionalDiagnosis;
+  patient.evaluationDiagnosis = evaluationDiagnosis || patient.evaluationDiagnosis;
 
   // treatment
-  patient.planningTreatment =
-    req.body.planningTreatment || patient.planningTreatment;
-  patient.therapeuticInterventions =
-    req.body.therapeuticInterventions || patient.therapeuticInterventions;
-  patient.recommendedActivities =
-    req.body.recommendedActivities || patient.recommendedActivities;
+  patient.planningTreatment = planningTreatment || patient.planningTreatment;
+  patient.therapeuticInterventions = therapeuticInterventions || patient.therapeuticInterventions;
+  patient.recommendedActivities = recommendedActivities || patient.recommendedActivities;
 
   // Medication
-  patient.medicines = req.body.medicines || patient.medicines;
-  patient.dose = req.body.dose || patient.dose;
-  patient.frequency = req.body.frequency || patient.frequency;
+  patient.medicines = medicines || patient.medicines;
+  patient.dose = dose || patient.dose;
+  patient.frequency = frequency || patient.frequency;
 
   // evaluation
   patient.reviewsTreatment =
     req.body.reviewsTreatment || patient.reviewsTreatment;
-  patient.adjustmentsMade = req.body.adjustmentsMade || patient.adjustmentsMade;
-  patient.treatmentEffectiveness =
-    req.body.treatmentEffectiveness || patient.treatmentEffectiveness;
+  patient.adjustmentsMade = adjustmentsMade || patient.adjustmentsMade;
+  patient.treatmentEffectiveness = treatmentEffectiveness || patient.treatmentEffectiveness;
 
   // notes
-  patient.observations = req.body.observations || patient.observations;
-  patient.importantEvents = req.body.importantEvents || patient.importantEvents;
-  patient.feedbackPatient = req.body.feedbackPatient || patient.feedbackPatient;
+  patient.observations = observations || patient.observations;
+  patient.importantEvents = importantEvents || patient.importantEvents;
+  patient.feedbackPatient = feedbackPatient || patient.feedbackPatient;
 
   try {
     const updatedPatient = await patient.save();
