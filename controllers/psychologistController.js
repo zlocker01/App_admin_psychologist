@@ -154,6 +154,12 @@ const newPassword = async (req, res) => {
   }
 };
 
+// updating profile
+const updateProfile = async (req, res) => {
+  console.log(req.params.id);
+  console.log(req.body);
+}
+
 export {
   register,
   profile,
@@ -162,4 +168,5 @@ export {
   forgottenPassword,
   confirmationToken,
   newPassword,
+  updateProfile,
 };
