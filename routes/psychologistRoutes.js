@@ -8,7 +8,6 @@ import {
   forgottenPassword,
   confirmationToken,
   newPassword,
-  updateProfile,
 } from "../controllers/psychologistController.js";
 
 // express router
@@ -27,4 +26,3 @@ psychologistRouter.route("/forgotten-password/:token").post(newPassword).get(con
 
 // private access using middleware 
 psychologistRouter.get("/profile", checkAuth, profile);
-psychologistRouter.put("/profile/:id", checkAuth, updateProfile);
