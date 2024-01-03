@@ -84,6 +84,7 @@ const updatePatient = async (req, res) => {
     feedbackPatient,
   } = req.body;
 
+
   // basic info
   patient.name = name || patient.name;
   patient.age = age || patient.age;
@@ -93,6 +94,7 @@ const updatePatient = async (req, res) => {
   patient.email = email || patient.email;
   patient.address = address || patient.address;
   patient.date = date || patient.date;
+
   
   // history
   patient.reasonForConsultation = reasonForConsultation || patient.reasonForConsultation;
@@ -140,6 +142,7 @@ const updatePatient = async (req, res) => {
     res.json(updatedPatient);
   } catch (error) {
     console.log(error);
+    res.status(500).json({ msg: "Error en el servidor" });
   }
 };
 

@@ -8,7 +8,7 @@ const patientsSchema = mongoose.Schema(
       required: true,
     },
     age: {
-      type: String,
+      type: Number,
     },
     gender: {
       type: String,
