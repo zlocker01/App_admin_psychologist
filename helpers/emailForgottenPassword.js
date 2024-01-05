@@ -26,7 +26,7 @@ export const emailForgottenPassword = async (data) => {
     <p>Crea tu nueva contraseña haciendo clic en el siguiente botón:</p> 
     <a href="${process.env.FRONTEND_URL}/forgotten-password/${token}" style="background-color: #266FB3; color: #fff; padding:10px; text-decoration:none; border-radius:5px;">Reestablecer Contraseña</a>
     <p>Si tu no solicitaste un cambio de contraseña ignora este correo ⚠️</p>
-    <img src="https://storage.googleapis.com/pai-images/5e9243ac4119458a8b625624797b5b4a.jpeg" alt="Psychologist on therapy" width="270" height="290">
+    <img src="https://storage.googleapis.com/pai-images/e861337aafc04987a069eb0674310586.jpeg" alt="Psychologist on therapy" width="270" height="290">
     </div>`,
   });
   console.log("Message sent: %s", info.messageId);
